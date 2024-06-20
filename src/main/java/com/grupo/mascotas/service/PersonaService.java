@@ -36,6 +36,12 @@ public class PersonaService {
    public PersonaEntity modificarPersona(Long id_persona, PersonaDTO personaRequest){
         return personasRepository.findById(id_persona).map(persona ->{
             persona.setNombre(personaRequest.getNombre());
+            persona.setId_persona(id_persona);
+            persona.setApellidoPaterno(personaRequest.getApellidoPaterno());
+            persona.setApellidoMaterno(personaRequest.getApellidoMaterno());
+            persona.setDireccion(personaRequest.getDireccion());
+            persona.setTelefono(personaRequest.getTelefono());
+            persona.setEmail(personaRequest.getEmail());
             persona.setFechaNacimiento(personaRequest.getFechaNacimiento());
             return personasRepository.save(persona);
         }).get();

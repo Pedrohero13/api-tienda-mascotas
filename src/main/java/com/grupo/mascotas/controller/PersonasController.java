@@ -10,13 +10,14 @@ import com.grupo.mascotas.service.PersonaService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "api/v1")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonasController {
     @Autowired
     private PersonaService personaService;
@@ -34,8 +36,8 @@ public class PersonasController {
         return personaService.obtenerPersonas();
     }
     
-    @GetMapping(value = "/obtenerPersona/{id}")
-    public PersonaEntity obtenerPersonas(@RequestParam("id") Long id_persona){
+    @GetMapping(value = "/obtenerPersona/{id_persona}")
+    public PersonaEntity obtenerPersonas(@PathVariable Long id_persona){
         return personaService.obtenerPersona(id_persona);
     }
     @PostMapping(value = "/agregarPersona")
@@ -43,12 +45,12 @@ public class PersonasController {
         return personaService.agregarPersona(personaRequest);
     }
     
-    @PutMapping(value = "/modificarPersona/{id}")
-    public PersonaEntity modificarPersona(@RequestParam("id") Long id_persona, @RequestBody PersonaDTO personaRequest){
+    @PutMapping(value = "/modificarPersona/{id_persona}")
+    public PersonaEntity modificarPersona(@PathVariable Long id_persona, @RequestBody PersonaDTO personaRequest){
         return personaService.modificarPersona(id_persona,personaRequest);
     }
-    @DeleteMapping(value = "/borrarPersona/{id}")
-    public Map<String,String> borrarPersona(@RequestParam("id") Long id_persona){
+    @DeleteMapping(value = "/borrarPersona/{id_persona}")
+    public Map<String,String> borrarPersona(@PathVariable Long id_persona){
         return personaService.borrarPersona(id_persona);
     }
 }

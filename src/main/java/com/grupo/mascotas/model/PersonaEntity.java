@@ -4,6 +4,7 @@
  */
 package com.grupo.mascotas.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,6 +34,6 @@ public class PersonaEntity implements Serializable{
     private String telefono; 
     private String email;
     
-    @OneToMany(mappedBy = "persona")
+   @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private List<MascotasEntity> mascotas;
 }

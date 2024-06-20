@@ -14,4 +14,5 @@ import lombok.Data;
 public class MascotaDTO {
     private String nombre;
     private String fechaNacimiento;
+    private String emailPersona;
 }

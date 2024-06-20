@@ -5,6 +5,7 @@
 package com.grupo.mascotas.repository;
 
 import com.grupo.mascotas.model.MascotasEntity;
+import com.grupo.mascotas.model.PersonaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

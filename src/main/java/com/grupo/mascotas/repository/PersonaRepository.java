@@ -5,6 +5,7 @@
 package com.grupo.mascotas.repository;
 
 import com.grupo.mascotas.model.PersonaEntity;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author SI-PEDRO-HERNANDEZ
  */
 public interface PersonaRepository extends JpaRepository<PersonaEntity, Long>{
-    
+    public abstract Optional<PersonaEntity> findByEmail(String email);
 }
